@@ -104,10 +104,27 @@ int main(void)
 
 //	  LL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
 //	  LL_mDelay(200);
-	  GPIOA->BSRR = 1<<5;
-	  LL_mDelay(200);
-	  GPIOA->BRR = 1<<5;
-	  LL_mDelay(200);
+//	  GPIOA->BSRR = 1<<5;
+//	  LL_mDelay(200);
+//	  GPIOA->BRR = 1<<5;
+//	  LL_mDelay(200);
+
+	  uint8_t array[32] = {1,0,1,0,1,0,0,1,1,1,0,1,1,1,0,1,1,1,0,0,1,0,1,0,1,0,0,0,0,0,0,0};
+	  for (int i = 0; i < 32; i++)
+	  {
+
+		  if (array[i] == 0)
+		  {
+			  LL_GPIO_ResetOutputPin(LD2_GPIO_Port, LD2_Pin);
+			  LL_mDelay(200);
+		  }
+		  else
+		  {
+			  LL_GPIO_SetOutputPin(LD2_GPIO_Port, LD2_Pin);
+			  LL_mDelay(200);
+		  }
+
+	  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
