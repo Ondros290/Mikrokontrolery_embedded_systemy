@@ -50,7 +50,21 @@ void button()
 	static uint32_t delay3;
 	static uint32_t off_time1;
 
-	//static uint16_t debounce = 0xFFFF;
+	static uint16_t debounce = 0xFFFF;
+
+	if (Tick > delay3 + 5)
+	{
+		debounce <<= 1;
+		debounce |= LL_GPIO_IsInputPinSet(S2_GPIO_Port, S2_Pin);
+
+		if (debounce == 0x7FFF)
+		{
+			LL_GPIO_SetOutputPin(LED2_GPIO_Port, LED2_Pin);
+			off_time1 = Tick + LED_TIME_SHORT;
+		}
+		delay3 = Tick;
+	}
+
 
 	if (Tick > delay2 + LED_TIME_SHORT)
 	{
@@ -61,26 +75,20 @@ void button()
 			LL_GPIO_SetOutputPin(LED2_GPIO_Port, LED2_Pin);
 		}
 		old_s2 = new_s2;
-
-
 		delay2 = Tick;
 	}
 
-	if (Tick > delay3 + LED_TIME_SHORT)
-	{
-		static uint32_t old_s1;
-		uint32_t new_s1 = LL_GPIO_IsInputPinSet(S2_GPIO_Port, S2_Pin);
-		if (old_s1 && !new_s1) { // falling edge
-			off_time1 = Tick + LED_TIME_LONG;
-			LL_GPIO_SetOutputPin(LED2_GPIO_Port, LED2_Pin);
-		}
-		old_s1 = new_s1;
-
-//		if (Tick > off_time2) {
-//			LL_GPIO_ResetOutputPin(LED2_GPIO_Port, LED2_Pin);
+//	if (Tick > delay3 + LED_TIME_SHORT)
+//	{
+//		static uint32_t old_s1;
+//		uint32_t new_s1 = LL_GPIO_IsInputPinSet(S2_GPIO_Port, S2_Pin);
+//		if (old_s1 && !new_s1) { // falling edge
+//			off_time1 = Tick + LED_TIME_LONG;
+//			LL_GPIO_SetOutputPin(LED2_GPIO_Port, LED2_Pin);
 //		}
-		delay3 = Tick;
-	}
+//		old_s1 = new_s1;
+//		delay3 = Tick;
+//	}
 
 	if (Tick > off_time1) {
 		LL_GPIO_ResetOutputPin(LED2_GPIO_Port, LED2_Pin);
