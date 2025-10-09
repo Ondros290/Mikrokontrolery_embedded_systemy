@@ -100,8 +100,13 @@ sct_init();
   while (1)
   {
     /* USER CODE END WHILE */
- sct_led(0x7A5C36DE);
-	  HAL_Delay(1000);
+	for (int i = 0; i < 1000; i++)
+	{
+		sct_value(i);
+		HAL_Delay(250);
+
+	}
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
