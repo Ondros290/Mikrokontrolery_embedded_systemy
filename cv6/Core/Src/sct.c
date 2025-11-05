@@ -81,9 +81,9 @@ void sct_value(uint16_t value, uint16_t decimal, uint8_t led)
 		}
 	};
 	uint32_t reg = 0;
-	reg |= reg_values[0][value / 1000 % 10];
-	reg |= reg_values[1][value / 100 % 10];
-	reg |= reg_values[2][value / 10 % 10];
+	reg |= reg_values[0][value / 100 % 10];
+	reg |= reg_values[1][value / 10 % 10];
+	reg |= reg_values[2][value / 1 % 10];
 
 	if (decimal == 1)
 	{
