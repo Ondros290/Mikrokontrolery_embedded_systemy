@@ -442,8 +442,8 @@ void StartAcceleroTask(void const * argument)
 	lis2dw12_data_rate_set(&lis2dw12, LIS2DW12_XL_ODR_25Hz);
 
   /* Infinite loop */
-  for(;;)
-  {
+	for(;;)
+	{
 	  uint8_t samples;
 	  uint16_t counter = 0;
 	  int16_t raw_acceleration[3];
@@ -451,16 +451,15 @@ void StartAcceleroTask(void const * argument)
 	  for (uint8_t i = 0; i < samples; i++) {
 		  // Read acceleration data
 		  lis2dw12_acceleration_raw_get(&lis2dw12, raw_acceleration);
-
-
 	  }
+
 	  xQueueSend(xVisualQueueHandle, &raw_acceleration[0], portMAX_DELAY);
 	  if (counter >= 20)
-	{
-			  counter = 0;
-			  printf("X=%d Y=%d Z=%d\n", raw_acceleration[0], raw_acceleration[1], raw_acceleration[2]);
-		  }
-	   vTaskDelay(50);
+	  {
+		counter = 0;
+		printf("X=%d Y=%d Z=%d\n", raw_acceleration[0], raw_acceleration[1], raw_acceleration[2]);
+	  }
+	  vTaskDelay(50);
 	  counter++;
 
 	  //vTaskDelay(50);
