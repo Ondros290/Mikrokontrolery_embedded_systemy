@@ -1,0 +1,57 @@
+{
+    "end_device_ids": {
+        "device_id": "devkit-81",
+        "application_ids": {
+            "application_id": "mpc-mks"
+        },
+        "dev_eui": "70B3D57ED0074987",
+        "dev_addr": "260B0481"
+    },
+    "correlation_ids": [
+        "gs:uplink:01KC6B5E8PFZBP2Q0YGBSVDG19"
+    ],
+    "received_at": "2025-12-11T09:16:38.246987010Z",
+    "uplink_message": {
+        "f_port": 1,
+        "f_cnt": 41,
+        "frm_payload": "MjQ3ODIxOzQw",
+        "rx_metadata": [
+            {
+                "gateway_ids": {
+                    "gateway_id": "urel",
+                    "eui": "0016C001F1133ACA"
+                },
+                "time": "2025-12-11T09:16:37.020Z",
+                "timestamp": 2386887058,
+                "rssi": -85,
+                "channel_rssi": -85,
+                "snr": 10.8,
+                "frequency_offset": "4906",
+                "uplink_token": "ChIKEAoEdXJlbBIIABbAAfETOsoQkoOU8ggaCwj2l+rJBhC25acSINDEuOy70CYqCwj1l+rJBhCA2sQJ",
+                "gps_time": "2025-12-11T09:16:37.020Z",
+                "received_at": "2025-12-11T09:16:38.019841816Z"
+            }
+        ],
+        "settings": {
+            "data_rate": {
+                "lora": {
+                    "bandwidth": 125000,
+                    "spreading_factor": 7,
+                    "coding_rate": "4/5"
+                }
+            },
+            "frequency": "868100000",
+            "timestamp": 2386887058,
+            "time": "2025-12-11T09:16:37.020Z"
+        },
+        "received_at": "2025-12-11T09:16:38.039569389Z",
+        "consumed_airtime": "0.056576s",
+        "network_ids": {
+            "net_id": "000013",
+            "ns_id": "EC656E0000000181",
+            "tenant_id": "ttn",
+            "cluster_id": "eu1",
+            "cluster_address": "eu1.cloud.thethings.network"
+        }
+    }
+}
